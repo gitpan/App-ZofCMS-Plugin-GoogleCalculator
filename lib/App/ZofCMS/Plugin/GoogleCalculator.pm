@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::GoogleCalculator;
 use warnings;
 use strict;
 
-our $VERSION = '0.0101';
+our $VERSION = '0.0102';
 use WWW::Google::Calculator;
 use base 'App::ZofCMS::Plugin::Base';
 
@@ -172,6 +172,7 @@ will be set to the error message where C<$t> is ZofCMS Template hashref.
 =head1 AUTHOR
 
 'Zoffix, C<< <'zoffix at cpan.org'> >>
+(L<http://haslayout.net/>, L<http://zoffix.com/>, L<http://zofdesign.com/>)
 
 =head1 BUGS
 
