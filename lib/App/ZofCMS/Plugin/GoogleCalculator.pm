@@ -3,7 +3,7 @@ package App::ZofCMS::Plugin::GoogleCalculator;
 use warnings;
 use strict;
 
-our $VERSION = '0.0102';
+our $VERSION = '0.0103';
 use WWW::Google::Calculator;
 use base 'App::ZofCMS::Plugin::Base';
 
@@ -100,7 +100,20 @@ B<Mandatory>. You need to include the plugin in the list of plugins to execute.
         expr       => undef,
     }
 
-B<Mandatory>. Takes a hashref as a value. To run with all the defaults, pass an empty hashref.
+    plug_google_calculator => sub {  # set configuration via a subref
+        my ( $t, $q, $config ) = @_;
+        return {
+            from_query => 1,
+            q_name     => 'calc',
+            expr       => undef,
+        };
+    }
+
+B<Mandatory>. Takes a hashref or a subref as a value. If subref is specified,
+its return value will be assigned to C<plug_google_calculator> as if it was already there. If sub returns
+an C<undef>, then plugin will stop further processing. The C<@_> of the subref will
+contain (in that order): ZofCMS Tempalate hashref, query parameters hashref and
+L<App::ZofCMS::Config> object. To run with all the defaults, pass an empty hashref.
 Hashref's keys/values are as follows:
 
 =head3 C<from_query>
